@@ -20,7 +20,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         AStaff.JobRole = txtJobRole.Text;
         AStaff.Email = txtEmail.Text;
         AStaff.DateStarted = DateTime.Parse(txtStartDate.Text);
-        AStaff.IdNumber = Int32.Parse(txtStaffId.Text);
+        AStaff.StaffId = Int32.Parse(txtStaffId.Text);
         Session["AStaff"] = AStaff;
 
 
