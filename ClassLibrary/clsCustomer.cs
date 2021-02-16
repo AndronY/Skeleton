@@ -87,7 +87,7 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@ID", ID);
-            DB.Execute("sproc_tblCustomers_FilerByID");
+            DB.Execute("sproc_tblCustomers_FilterByID");
             if (DB.Count == 1)
             {
                 mID = Convert.ToInt32(DB.DataTable.Rows[0]["ID"]);
