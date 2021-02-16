@@ -112,11 +112,11 @@ namespace Testing1
             //Boolean variable to record if data is okay(Assume it is)
             Boolean Okay = true;
             //Create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 7;
             //Invoke the method
             Found = AStaff.Find(StaffId);
             //Check the staff Id
-            if (AStaff.StaffId != 21)
+            if (AStaff.StaffId != 7)
             {
                 Okay = false;
             }
@@ -134,7 +134,7 @@ namespace Testing1
             //Boolean variable to record if data is okay(Assume it is)
             Boolean Okay = true;
             //Create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 7;
             //Invoke the method
             Found = AStaff.Find(StaffId);
             //Check the staff Id
@@ -157,7 +157,7 @@ namespace Testing1
             //boolean variable to record if data is OK (assume it is)
             Boolean Okay = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 7;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //check the name
@@ -179,7 +179,7 @@ namespace Testing1
             //boolean variable to record if data is OK (assume it is)
             Boolean Okay = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 7;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //check the job role
@@ -201,7 +201,7 @@ namespace Testing1
             //boolean variable to record if data is OK (assume it is)
             Boolean Okay = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 7;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //check the email
@@ -223,7 +223,7 @@ namespace Testing1
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 7;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //check if it exists
