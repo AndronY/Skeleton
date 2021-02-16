@@ -12,6 +12,7 @@
         </div>
         <asp:Label ID="lblStaffId" runat="server" height="27px" Text="Staff ID" width="97px"></asp:Label>
         <asp:TextBox ID="txtStaffId" runat="server" style="margin-bottom: 1px"></asp:TextBox>
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 295px; top: 42px; position: absolute; height: 35px; width: 84px;" Text="Find" />
         <p>
             <asp:Label ID="lblName" runat="server" height="27px" Text="Name" width="97px"></asp:Label>
             <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
@@ -28,6 +29,7 @@
         </p>
         <asp:CheckBox ID="chkStaffExists" runat="server" Text="Exists" />
         <p>
+
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
         <asp:Button ID="btnOkay" runat="server" OnClick="btnOkay_Click" Text="OK" />
