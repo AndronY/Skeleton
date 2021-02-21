@@ -18,7 +18,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
         //capture customer ID
-        ACustomer.ID = int.Parse(txtCustomerID.Text);
+        ACustomer.ID = Convert.ToInt32(txtCustomerID.Text);
         //capture customer full name
         ACustomer.FullName = txtFullName.Text;
         //capture customer address
@@ -33,5 +33,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["ACustomer"] = ACustomer;
         //navigate to the viewer page
         Response.Redirect("CustomerViewer.aspx");
+    }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create a new instance of clsCustomer
+        clsCustomer ACustomer = new clsCustomer();
+        //variable to store the primary key
+        Int32 ID;
+        //variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        ID = Convert.ToInt32(txtCustomerID.Text);
+        //find the record
+        Found = ACustomer.Find(ID);
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtAddress.Text = ACustomer.Address;
+            txtDateRegistered.Text = Convert.ToString(ACustomer.DateRegistered);
+            txtEmailAddress.Text = ACustomer.EmailAddress;
+            txtFullName.Text = ACustomer.FullName;
+        }
     }
 }
