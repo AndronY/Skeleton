@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace ClassLibrary
 {
@@ -133,8 +134,72 @@ namespace ClassLibrary
                 return false;
             }
 
-        
+
+        }
+
+        public string Valid(string name, string jobRole, string email, string dateStarted)
+        {
+            String error = "";
+
+            DateTime DateTemp;
+
+            if (name.Length == 0)
+            {
+                //record the error
+                error = error + "The name must not be blank : ";
+            }
+            //if the name is greater than 6 characters
+            if (name.Length > 50)
+            {
+                //record the error
+                error = error + "The name must be less than 50 characters : ";
+            }
+
+            if (jobRole.Length == 0)
+            {
+                error = error + "The Job role must not be blank: ";
+            }
+
+            if(jobRole.Length > 50)
+            {
+                error = error + "The job role must be less than 50 characters: ";
+            }
+
+            if (email.Length == 0)
+            {
+                error = error + "The email must not be left blank: ";
+            }
+            if (email.Length >50)
+            {
+                error = error + "The email must not be more than 50 characters: ";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(dateStarted);
+                //checks if the date is earlier than today's date
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //records the error
+                    error = error + "The date cannot be in the past : ";
+
+                }
+                //checks if the date is after today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    error = error + "The date cannot be in the future : ";
+                }
+
+            }
+
+            catch
+            {
+                //records the error
+                error = error + "The date was not a valid date : ";
+            }
+            //returns error message
+            return error;
         }
 
     }
 }
+
