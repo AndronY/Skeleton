@@ -15,16 +15,46 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOkay_Click(object sender, EventArgs e)
     {
+        //Create new instance of clsStaff
         clsStaff AStaff = new clsStaff();
-        AStaff.Name = txtName.Text;
-        AStaff.JobRole = txtJobRole.Text;
-        AStaff.Email = txtEmail.Text;
-        AStaff.DateStarted = DateTime.Parse(txtStartDate.Text);
-        AStaff.StaffId = Int32.Parse(txtStaffId.Text);
-        Session["AStaff"] = AStaff;
+        //capture the name
+         string Name = txtName.Text;
+        //capture the job role
+        string JobRole = txtJobRole.Text;
+        //capture the email
+        string Email = txtEmail.Text;
+        //capture the date started
+        string DateStarted = txtStartDate.Text;
+        //capture the staff id
+        string StaffId = txtStaffId.Text;
+        //variable to store any data messages
+        string Error = "";
+        //validate the data
+        Error = AStaff.Valid(Name, JobRole, Email, DateStarted);
+        if (Error == "")
+        {
+            //capture the name
+            AStaff.Name = txtName.Text;
+            //capture the job role
+            AStaff.JobRole = txtJobRole.Text;
+            //capture the email
+            AStaff.Email = txtEmail.Text;
+            //capture the date started
+            AStaff.DateStarted = Convert.ToDateTime(DateStarted);
+            //capture the staff id
+            AStaff.StaffId = Convert.ToInt32(StaffId);
 
+            //store the staff in the session object
+            Session["AStaff"] = AStaff;
 
-        Response.Redirect("StaffViewer.aspx");
+            //redirect to the viewer page
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
 
