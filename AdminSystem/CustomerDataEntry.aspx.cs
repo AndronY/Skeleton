@@ -17,22 +17,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
-        //capture customer ID
-        ACustomer.ID = Convert.ToInt32(txtCustomerID.Text);
-        //capture customer full name
-        ACustomer.FullName = txtFullName.Text;
-        //capture customer address
-        ACustomer.Address = txtAddress.Text;
-        //capture customer email address
-        ACustomer.EmailAddress = txtEmailAddress.Text;
-        //capture customer date registered
-        ACustomer.DateRegistered = DateTime.Parse(txtDateRegistered.Text);
-        //capture customer above18
-        ACustomer.Above18 = chkAbove18.Checked;
-        //store the ID in the session object
-        Session["ACustomer"] = ACustomer;
-        //navigate to the viewer page
-        Response.Redirect("CustomerViewer.aspx");
+        //capture the full name
+        string FullName = txtFullName.Text;
+        //capture the address
+        string Address = txtAddress.Text;
+        //capture the email address
+        string EmailAddress = txtEmailAddress.Text;
+        //capture the date registered
+        string DateRegistered = txtDateRegistered.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = ACustomer.Valid(FullName, Address, EmailAddress, DateRegistered);
+        if (Error == "")
+        {
+            //capture customer full name
+            ACustomer.FullName = FullName;
+            //capture customer address
+            ACustomer.Address = Address;
+            //capture customer email address
+            ACustomer.EmailAddress = EmailAddress;
+            //capture customer date registered
+            ACustomer.DateRegistered = Convert.ToDateTime(DateRegistered);
+            //store the ID in the session object
+            Session["ACustomer"] = ACustomer;
+            //navigate to the viewer page
+            Response.Write("CustomerViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
