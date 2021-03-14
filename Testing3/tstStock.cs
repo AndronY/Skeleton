@@ -53,6 +53,99 @@ namespace Testing3
             AStock.Price = TestData;
             Assert.AreEqual(AStock.Price, TestData);
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Int32 ProductID = 21;
+            Found = AStock.Find(ProductID);
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestProductIDFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductID = 21;
+            Found = AStock.Find(ProductID);
+            if (AStock.ProductID != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestProductDescriptionFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductID = 21;
+            Found = AStock.Find(ProductID);
+            if (AStock.ProductDescription != "Test Description")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductID = 21;
+            Found = AStock.Find(ProductID);
+            if (AStock.DateAdded != Convert.ToDateTime("30/08/2022"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestStockQuantityFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductID = 21;
+            Found = AStock.Find(ProductID);
+            if (AStock.StockQuantity != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestPriceFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductID = 21;
+            Found = AStock.Find(ProductID);
+            if (AStock.Price != Convert.ToDecimal(26))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestActiveFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductID = 21;
+            Found = AStock.Find(ProductID);
+            if (AStock.Active != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
 
     }
 }
