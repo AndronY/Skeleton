@@ -15,8 +15,8 @@ namespace ClassLibrary
         private String mJobRole;
         //private data member for the staff email
         private String mEmail;
-        //private data member for staff exists
-        private Boolean mExists;
+        //private data member for staff StaffExists
+        private Boolean mStaffExists;
 
         //public property for Staff Id
         public Int32 StaffId
@@ -91,19 +91,19 @@ namespace ClassLibrary
             }
 
         }
-        //public property for exists
-        public bool Exists
+        //public property for StaffExists
+        public bool StaffExists
         {
             get
             {
                 //return private data
-                return mExists;
+                return mStaffExists;
             }
 
             set
             {
                 //set private data
-                mExists = value;
+                mStaffExists = value;
             }
         }
 
@@ -124,7 +124,7 @@ namespace ClassLibrary
                 mDateStarted = Convert.ToDateTime(DB.DataTable.Rows[0]["DateStarted"]);
                 mJobRole = Convert.ToString(DB.DataTable.Rows[0]["JobRole"]);
                 mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
-                mExists = Convert.ToBoolean(DB.DataTable.Rows[0]["Exists"]);
+                mStaffExists = Convert.ToBoolean(DB.DataTable.Rows[0]["StaffExists"]);
                 //return that everything worked
                 return true;
             }
