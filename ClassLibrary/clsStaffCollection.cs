@@ -7,6 +7,9 @@ namespace ClassLibrary
     {
         //private data member for the list
         List<clsStaff> mStaffList = new List<clsStaff>();
+        //private data member thisStaff
+        clsStaff mthisStaff = new clsStaff();
+
 
         //public property for the staff list 
         public List<clsStaff> StaffList {
@@ -33,7 +36,18 @@ namespace ClassLibrary
               //  ;
             }
         }
-        public clsStaff ThisStaff { get; set; }
+        public clsStaff ThisStaff {
+            get
+            {
+                //return the private staff data
+                return mthisStaff;
+            }
+            set
+            {
+                //set the private data
+                mthisStaff = value;
+            }
+        }
 
 
 
@@ -56,7 +70,7 @@ namespace ClassLibrary
                 //create a blank staff
                 clsStaff AStaff = new clsStaff();
                 //reads in the fields from the current record
-                AStaff.Exists = Convert.ToBoolean(DB.DataTable.Rows[Index]["Exists"]);
+                AStaff.StaffExists = Convert.ToBoolean(DB.DataTable.Rows[Index]["StaffExists"]);
                 AStaff.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
                 AStaff.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
                 AStaff.DateStarted = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateStarted"]);
@@ -69,6 +83,35 @@ namespace ClassLibrary
             }
         }
 
+        public int Add()
+        {
+            //adds a new recodr to the databse based on the value of mthisStaff, sets the primary key value as
+            //the new record
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the procedure
+            DB.AddParameter("@Name", mthisStaff.Name);
+            DB.AddParameter("@DateStarted", mthisStaff.DateStarted);
+            DB.AddParameter("@JobRole", mthisStaff.JobRole);
+            DB.AddParameter("@Email", mthisStaff.Email);
+            DB.AddParameter("@StaffExists", mthisStaff.StaffExists);
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblStaff_Insert");
+        }
 
+        public void Update()
+        {
+            //update an existing record based on the values of thisStaff 
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StaffId", mthisStaff.StaffId);
+            DB.AddParameter("@Name", mthisStaff.Name);
+            DB.AddParameter("@DateStarted", mthisStaff.DateStarted);
+            DB.AddParameter("@JobRole", mthisStaff.JobRole);
+            DB.AddParameter("@Email", mthisStaff.Email);
+            DB.AddParameter("@StaffExists", mthisStaff.StaffExists);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_Update");
+        }
     }
 }

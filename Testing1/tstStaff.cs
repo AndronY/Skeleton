@@ -25,12 +25,12 @@ namespace Testing1
             Assert.IsNotNull(AStaff);
         }
         [TestMethod]
-        public void ExistsPropertyeOkay()
+        public void StaffExistsPropertyeOkay()
         {
             clsStaff AStaff = new clsStaff();
             Boolean TestData = true;
-            AStaff.Exists = TestData;
-            Assert.AreEqual(AStaff.Exists, TestData);
+            AStaff.StaffExists = TestData;
+            Assert.AreEqual(AStaff.StaffExists, TestData);
         }
         [TestMethod]
         public void DateStartedPropertyOkay()
@@ -145,7 +145,7 @@ namespace Testing1
             //Boolean variable to record if data is okay(Assume it is)
             Boolean Okay = true;
             //Create some test data to use with the method
-            Int32 StaffId = 7;
+            Int32 StaffId = 6;
             //Invoke the method
             Found = AStaff.Find(StaffId);
             //Check the staff Id
@@ -168,7 +168,7 @@ namespace Testing1
             //boolean variable to record if data is OK (assume it is)
             Boolean Okay = true;
             //create some test data to use with the method
-            Int32 StaffId = 7;
+            Int32 StaffId = 6;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //check the name
@@ -190,7 +190,7 @@ namespace Testing1
             //boolean variable to record if data is OK (assume it is)
             Boolean Okay = true;
             //create some test data to use with the method
-            Int32 StaffId = 7;
+            Int32 StaffId = 6;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //check the job role
@@ -212,7 +212,7 @@ namespace Testing1
             //boolean variable to record if data is OK (assume it is)
             Boolean Okay = true;
             //create some test data to use with the method
-            Int32 StaffId = 7;
+            Int32 StaffId = 6;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //check the email
@@ -225,7 +225,7 @@ namespace Testing1
         }
 
         [TestMethod]
-        public void TestExistsFound()
+        public void TestStaffExistsFound()
         {
             //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
@@ -237,8 +237,8 @@ namespace Testing1
             Int32 StaffId = 7;
             //invoke the method
             Found = AStaff.Find(StaffId);
-            //check if it exists
-            if (AStaff.Exists != true)
+            //check if it StaffExists
+            if (AStaff.StaffExists != true)
             {
                 OK = false;
             }

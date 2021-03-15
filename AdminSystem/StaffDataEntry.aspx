@@ -27,7 +27,7 @@
             <asp:Label ID="lblEmail" runat="server" height="27px" Text="Email" width="97px"></asp:Label>
             <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
         </p>
-        <asp:CheckBox ID="chkStaffExists" runat="server" Text="Exists" />
+        <asp:CheckBox ID="chkStaffStaffExists" runat="server" Text="StaffExists" />
         <p>
 
             <asp:Label ID="lblError" runat="server"></asp:Label>
