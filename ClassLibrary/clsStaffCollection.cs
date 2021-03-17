@@ -49,23 +49,18 @@ namespace ClassLibrary
             }
         }
 
-
-
-        //constructor for the class
-        public clsStaffCollection()
+        void PopulateArray(clsDataConnection DB)
         {
             // var for the index
             Int32 Index = 0;
             //var to store the count
-            Int32 RecordCount = 0;
-            //object for the data connection
-            clsDataConnection DB = new clsDataConnection();
-            //execute the stored procedure
-            DB.Execute("sproc_tblStaff_SelectAll");
+            Int32 RecordCount;
             //get the count of records
             RecordCount = DB.Count;
+            //execute the stored procedure
+            mStaffList = new List<clsStaff>();
             //while there are records to process
-            while (Index<RecordCount)
+            while (Index < RecordCount)
             {
                 //create a blank staff
                 clsStaff AStaff = new clsStaff();
@@ -81,6 +76,17 @@ namespace ClassLibrary
                 //point at the next record
                 Index++;
             }
+        }
+
+        //constructor for the class
+        public clsStaffCollection()
+        {
+            //object for data connection
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_SelectAll");
+            //populate the array list with the data table
+            PopulateArray(DB);
         }
 
         public int Add()
@@ -112,6 +118,30 @@ namespace ClassLibrary
             DB.AddParameter("@StaffExists", mthisStaff.StaffExists);
             //execute the stored procedure
             DB.Execute("sproc_tblStaff_Update");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed by thisStaff
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StaffId", mthisStaff.StaffId);
+            //execute the procedure
+            DB.Execute("sproc_tblStaff_Delete");
+        }
+
+        public void ReportByName(string Name)
+        {
+            //filters records based on a full or partial name
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the name to the database
+            DB.AddParameter("@Name", Name);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_FilterByName");
+            //populate the array list with the data table
+            PopulateArray(DB);
         }
     }
 }
