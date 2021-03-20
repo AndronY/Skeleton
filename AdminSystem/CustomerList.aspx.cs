@@ -32,4 +32,13 @@ public partial class _1_List : System.Web.UI.Page
         //bind the data to the list
         lstCustomerList.DataBind();
     }
+
+    //event handler for the add button
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        //store -1 into the session object to indicate this is a new record
+        Session["FullName"] = -1;
+        //redirect to the data entry page
+        Response.Redirect("ACustomer.aspx");
+    }
 }

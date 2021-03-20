@@ -5,6 +5,11 @@ namespace ClassLibrary
 {
     public class clsCustomerCollection
     {
+        //private data member for the list
+        List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        //private data member thisCustomer
+        clsCustomer mThisCustomer = new clsCustomer();
+
         public clsCustomerCollection()
         {
             //var for the index
@@ -36,9 +41,6 @@ namespace ClassLibrary
             }
         }
 
-
-        List<clsCustomer> mCustomerList = new List<clsCustomer>();
-
         //public customer list
         public List<clsCustomer> CustomerList
         {
@@ -67,6 +69,35 @@ namespace ClassLibrary
             }
         }
 
-        public clsCustomer ThisCustomer { get; set; }
+        //public property for ThisAddress
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                //return the private data
+                return mThisCustomer;
+            }
+            set
+            {
+                //set the private data
+                mThisCustomer = value;
+            }
+        }
+
+        public int Add()
+        {
+            //adds a new record to the daabase based on the values of mThisAddress
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@FullName", mThisCustomer.FullName);
+            DB.AddParameter("@Address", mThisCustomer.Address);
+            DB.AddParameter("@EmailAddress", mThisCustomer.EmailAddress);
+            DB.AddParameter("@Above18", mThisCustomer.Above18);
+            DB.AddParameter("@DateRegistered", mThisCustomer.DateRegistered);
+            //execute the quary returning the primary key value
+            return DB.Execute("sproc_tblCustomers_Insert");
+
+        }
     }
 }
