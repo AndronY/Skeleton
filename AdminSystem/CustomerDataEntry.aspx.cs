@@ -39,10 +39,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.EmailAddress = EmailAddress;
             //capture customer date registered
             ACustomer.DateRegistered = Convert.ToDateTime(DateRegistered);
-            //store the ID in the session object
-            Session["ACustomer"] = ACustomer;
-            //navigate to the viewer page
-            Response.Write("CustomerViewer.aspx");
+            //create a new instance of the customer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            //set the ThisCustomer property
+            CustomerList.ThisCustomer = ACustomer;
+            //add the new record
+            CustomerList.Add();
+            //redirect back to the listpage
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {
