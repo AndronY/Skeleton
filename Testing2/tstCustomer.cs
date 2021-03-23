@@ -80,7 +80,7 @@ namespace Testing2
         {
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
-            Int32 ID = 4;
+            Int32 ID = 1;
             Found = ACustomer.Find(ID);
             Assert.IsTrue(Found);
         }
@@ -91,9 +91,9 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ID = 4;
+            Int32 ID = 1;
             Found = ACustomer.Find(ID);
-            if (ACustomer.ID !=4)
+            if (ACustomer.ID !=1)
             {
                 OK = false;
             }
@@ -106,7 +106,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ID = 4;
+            Int32 ID = 1;
             Found = ACustomer.Find(ID);
             if (ACustomer.FullName != "John Green")
             {
@@ -121,7 +121,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ID = 4;
+            Int32 ID = 1;
             Found = ACustomer.Find(ID);
             if (ACustomer.Address != "Test Street")
             {
@@ -136,7 +136,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ID = 4;
+            Int32 ID = 1;
             Found = ACustomer.Find(ID);
             if (ACustomer.EmailAddress != "John@gmail.com")
             {
@@ -151,9 +151,9 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ID = 4;
+            Int32 ID = 1;
             Found = ACustomer.Find(ID);
-            if (ACustomer.DateRegistered != Convert.ToDateTime("16/9/2015"))
+            if (ACustomer.DateRegistered != Convert.ToDateTime("16/09/2015"))
             {
                 OK = false;
             }
@@ -166,7 +166,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ID = 4;
+            Int32 ID = 1;
             Found = ACustomer.Find(ID);
             if (ACustomer.Above18 != true)
             {
