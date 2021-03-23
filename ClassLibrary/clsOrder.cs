@@ -40,6 +40,12 @@ namespace ClassLibrary
                 mOrderID = value;
             }
         }
+
+        public string Valid(string orderID, string orderDate, string customerID, string shippingAddress, string orderStatus)
+        {
+            throw new NotImplementedException();
+        }
+
         //public property for Orderdate
         public DateTime OrderDate
         {
