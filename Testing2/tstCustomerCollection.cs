@@ -179,5 +179,60 @@ namespace Testing2
             //test to see that the record was found
             Assert.IsFalse(Found);
         }
+
+        [TestMethod]
+        public void ReportByFullNameMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a blank string (should return all records);
+            FilteredCustomers.ReportByFullName("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void RepostByFullNameNoneFound()
+        {
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a post code that doesnt exist
+            FilteredCustomers.ReportByFullName("XXX XXX");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+        
+        [TestMethod]
+        public void ReportByFullNameTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply a full name that doesnt exist
+            FilteredCustomer.ReportByFullName("yyy yyy");
+            //check that the correct number of records are found
+            if (FilteredCustomer.Count == 2)
+            {
+                //check that the first record is ID 7
+                if (FilteredCustomer.CustomerList[0].ID != 7)
+                {
+                    OK = false;
+                }
+                //check that the first record is ID 8
+                if (FilteredCustomer.CustomerList[1].ID !=8)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
     }
 }
