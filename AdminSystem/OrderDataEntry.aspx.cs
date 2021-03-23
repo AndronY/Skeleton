@@ -11,34 +11,62 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+
     }
 
     protected void BtnOK_Click(object sender, EventArgs e)
     {
         //creates a new instance of ClsOrder
         ClsOrder AnOrder = new ClsOrder();
-        //captures the OrderID
-        AnOrder.OrderID = Convert.ToInt32(txtOrderID.Text);
-        //captures the Order Date
-        AnOrder.OrderDate = DateTime.Parse(txtOrderDate.Text);
-        //captures the Order Shipped
-        AnOrder.OrderShipped = chkOrderShipped.Checked;
-        //captures the CustomerID
-        AnOrder.CustomerID = Int32.Parse(txtCustomerID.Text);
-        //captures the Shipping Address
-        AnOrder.ShippingAddress = txtShippingAddress.Text;
-        //captures the Order Status
-        AnOrder.OrderStatus = txtOrderStatus.Text;
-       //stores the address in the session object
-       Session["AnOrder"] = AnOrder;
-        //Navigates to the viewer page
-        Response.Redirect("OrderViewer.aspx");
+        //capture the OrderID
+        String OrderID = txtOrderID.Text;
+        //capture the OrderDate
+        string OrderDate = txtOrderDate.Text;
+        //capture the CustomerID
+        String CustomerID = txtCustomerID.Text;
+
+        //capture the ShippingAddress
+        string ShippingAddress = txtShippingAddress.Text;
+        //capture the OrderStatus
+        String OrderStatus = txtOrderStatus.Text;
+
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress, OrderStatus);
+        if (Error == "")
+        {
+
+            //capture OrderDate
+            AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
+            //capture ShippingAddress
+            AnOrder.ShippingAddress = ShippingAddress;
+            //capture the OrderStatus
+            AnOrder.OrderStatus = OrderStatus;
+            //capture the OrderID
+            AnOrder.OrderID = Convert.ToInt32(OrderID);
+            //capture the CustomerID
+            AnOrder.CustomerID = Convert.ToInt32(CustomerID);
+
+
+            //store the Order in the session object
+            Session["AnOrder "] = AnOrder;
+            //navigate to the viewer page
+            Response.Write("OrderViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+
+        }
+
     }
 
 
 
-    protected void BtnFind_Click(object sender, EventArgs e)
+
+        protected void BtnFind_Click(object sender, EventArgs e)
     {
         //creates a new instance of ClsOrder
         ClsOrder AnOrder = new ClsOrder();
