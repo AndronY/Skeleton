@@ -58,7 +58,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = ACustomer.Valid(FullName, Address, EmailAddress, DateRegistered);
         if (Error == "")
         {
-            //capture the customer ID
+            //capture the ID
             ACustomer.ID = ID;
             //capture the full name
             ACustomer.FullName = FullName;
@@ -123,5 +123,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtEmailAddress.Text = ACustomer.EmailAddress;
             txtFullName.Text = ACustomer.FullName;
         }
+    }
+
+    protected void btnCustomerList_Click(object sender, EventArgs e)
+    {
+        //redirect back to the listpage
+        Response.Redirect("CustomerList.aspx");
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+
     }
 }
