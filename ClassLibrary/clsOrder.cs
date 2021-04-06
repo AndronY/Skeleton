@@ -43,54 +43,72 @@ namespace ClassLibrary
 
         public string Valid(string orderID, string orderDate, string customerID, string shippingAddress)
         {
+            //Creates a astring variable to store the error
             String Error = "";
             DateTime DateTemp;
-
+            //if OrderID is blank
             if (OrderID == 0)
             {
+                return "";
+                //record the error
                 Error = Error + "The Order ID may not be blank : ";
+            
+           
             }
+            //if OrderID is less than 10 characters
             if (OrderID > 10)
             {
+                //record the error
                 Error = Error + "The Order ID must be less than 10 characters : ";
             }
-
+            //If CustomerID is blank
             if (CustomerID == 0)
             {
                 Error = Error + "The Customer ID may not be blank : ";
             }
+            //if customerID is less than 10 characters
             if (CustomerID > 10)
             {
+                //record the error
                 Error = Error + "The Customer ID must be less than 10 characters : ";
             }
-
+            //if shippingaddress is blank
             if (ShippingAddress.Length == 0)
             {
+                //record the error
                 Error = Error + "The Shipping Address may not be blank : ";
+                
             }
-            if (ShippingAddress.Length > 50)
+            //if shippingaddress is less than 8 characters
+            if (ShippingAddress.Length > 8)
             {
-                Error = Error + "The  ShippingAddress must be less than 50 characters : ";
+                //record the error
+                Error = Error + "The  ShippingAddress must be less than 8 characters : ";
             }
 
             try
             {
+                //copy the Orderdate value to Date Temp variable
                 DateTemp = Convert.ToDateTime(OrderDate);
                 if (DateTemp < DateTime.Now.Date)
                 {
+                    //record the error
                     Error = Error + "The date cannot be in the past : ";
                 }
                 if (DateTemp > DateTime.Now.Date)
                 {
+                    //record the error
                     Error = Error + "The date cannot be in the future : ";
                 }
             }
             catch
             {
+                //record the error
                 Error = Error + "The date was not a valid date : ";
             }
-
+            //return any error messages
             return Error;
+
 
         }
 
