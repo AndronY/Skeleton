@@ -27,13 +27,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         //capture the ShippingAddress
         string ShippingAddress = txtShippingAddress.Text;
-        //capture the OrderStatus
-        String OrderStatus = txtOrderStatus.Text;
-
+ 
         //variable to store any error messages
         string Error = "";
         //validate the data
-        Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress, OrderStatus);
+        Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
         if (Error == "")
         {
 
@@ -41,8 +39,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
             //capture ShippingAddress
             AnOrder.ShippingAddress = ShippingAddress;
-            //capture the OrderStatus
-            AnOrder.OrderStatus = OrderStatus;
             //capture the OrderID
             AnOrder.OrderID = Convert.ToInt32(OrderID);
             //capture the CustomerID
