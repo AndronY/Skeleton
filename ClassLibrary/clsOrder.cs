@@ -41,9 +41,57 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string orderID, string orderDate, string customerID, string shippingAddress, string orderStatus)
+        public string Valid(string orderID, string orderDate, string customerID, string shippingAddress)
         {
-            throw new NotImplementedException();
+            String Error = "";
+            DateTime DateTemp;
+
+            if (OrderID == 0)
+            {
+                Error = Error + "The Order ID may not be blank : ";
+            }
+            if (OrderID > 10)
+            {
+                Error = Error + "The Order ID must be less than 10 characters : ";
+            }
+
+            if (CustomerID == 0)
+            {
+                Error = Error + "The Customer ID may not be blank : ";
+            }
+            if (CustomerID > 10)
+            {
+                Error = Error + "The Customer ID must be less than 10 characters : ";
+            }
+
+            if (ShippingAddress.Length == 0)
+            {
+                Error = Error + "The Shipping Address may not be blank : ";
+            }
+            if (ShippingAddress.Length > 50)
+            {
+                Error = Error + "The  ShippingAddress must be less than 50 characters : ";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(OrderDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            return Error;
+
         }
 
         //public property for Orderdate
