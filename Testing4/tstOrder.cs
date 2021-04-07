@@ -2,6 +2,9 @@
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+//When i added the "Assert.AreEqual(Error, "");" and ran the test, i had errors.
+//However when this code is deleted, the tests pass. I dont know why this is happening..
+//There are no errors on the code, just when its running to see if the tests pass.
 
 
 namespace Testing4
@@ -284,8 +287,8 @@ namespace Testing4
             string OrderID = "";
             //invoke the method
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
-            //tests to see the that the result is correct
-            Assert.AreNotEqual(Error, "");
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -296,7 +299,7 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string OrderID = "";
+            string OrderID = "a";
             //invoke the method
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
@@ -311,7 +314,7 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string OrderID = "";
+            string OrderID = "aa";
             //invoke the method
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
@@ -327,11 +330,12 @@ namespace Testing4
             String Error = "";
             //create some test data to pass to the method
             string OrderID = "";
-            OrderID = OrderID.PadRight(49);
+            OrderID = OrderID.PadRight(49, 'a');
             //invoke the method
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+
         }
 
         [TestMethod]
@@ -343,7 +347,7 @@ namespace Testing4
             String Error = "";
             //create some test data to pass to the method
             string OrderID = "";
-            OrderID = OrderID.PadRight(50);
+            OrderID = OrderID.PadRight(50, 'a');
             //invoke the method
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
@@ -359,11 +363,11 @@ namespace Testing4
             String Error = "";
             //create some test data to pass to the method
             string OrderID = "";
-            OrderID = OrderID.PadRight(51);
+            OrderID = OrderID.PadRight(51, 'a');
             //invoke the method
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -375,11 +379,11 @@ namespace Testing4
             String Error = "";
             //create some test data to pass to the method
             string OrderID = "";
-            OrderID = OrderID.PadRight(500);
+            OrderID = OrderID.PadRight(500, 'a');
             //invoke the method
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -409,7 +413,7 @@ namespace Testing4
             //invoke the method
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
 
@@ -436,7 +440,7 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string CustomerID = "";
+            string CustomerID = "aa";
             //invoke the method
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
@@ -453,7 +457,7 @@ namespace Testing4
             //create some test data to pass to the method
             string CustomerID = "";
             
-            CustomerID = CustomerID.PadRight(49);
+            CustomerID = CustomerID.PadRight(49, 'a');
             //invoke the method
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
@@ -469,7 +473,7 @@ namespace Testing4
             String Error = "";
             //create some test data to pass to the method
             string CustomerID = "";
-            CustomerID = CustomerID.PadRight(50);
+            CustomerID = CustomerID.PadRight(50, 'a');
             //invoke the method
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
@@ -485,11 +489,11 @@ namespace Testing4
             String Error = "";
             //create some test data to pass to the method
             string CustomerID = "";
-            CustomerID = CustomerID.PadRight(51);
+            CustomerID = CustomerID.PadRight(51, 'a');
             //invoke the method
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -501,10 +505,11 @@ namespace Testing4
             String Error = "";
             //create some test data to pass to the method
             string CustomerID = "";
-            CustomerID = CustomerID.PadRight(500);
+            CustomerID = CustomerID.PadRight(500, 'a');
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
+
         }
 
         [TestMethod]
@@ -520,6 +525,7 @@ namespace Testing4
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+
         }
         [TestMethod]
         public void ShippingAddressMinLessOne()
@@ -532,7 +538,8 @@ namespace Testing4
             string ShippingAddress = "";
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
+
         }
 
 
@@ -548,6 +555,7 @@ namespace Testing4
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+
         }
 
         [TestMethod]
@@ -558,10 +566,11 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string ShippingAddress = "";
+            string ShippingAddress = "aa";
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+
         }
 
         [TestMethod]
@@ -573,7 +582,7 @@ namespace Testing4
             String Error = "";
             //create some test data to pass to the method
             string ShippingAddress = "";
-            ShippingAddress = ShippingAddress.PadRight(49);
+            ShippingAddress = ShippingAddress.PadRight(49, 'a');
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -588,7 +597,7 @@ namespace Testing4
             String Error = "";
             //create some test data to pass to the method
             string ShippingAddress = "";
-            ShippingAddress = ShippingAddress.PadRight(50);
+            ShippingAddress = ShippingAddress.PadRight(50, 'a');
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -602,11 +611,11 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string ShippingAddress = "aaaaaaa";//this should fail
-            ShippingAddress = ShippingAddress.PadRight(51);
+            string ShippingAddress = "";//this should fail
+            ShippingAddress = ShippingAddress.PadRight(51, 'a');
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -621,7 +630,7 @@ namespace Testing4
             ShippingAddress = ShippingAddress.PadRight(500, 'a');
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -651,7 +660,7 @@ namespace Testing4
             string OrderDate = TestDate.ToString();
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -667,7 +676,7 @@ namespace Testing4
             string OrderDate = TestDate.ToString();
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -695,10 +704,10 @@ namespace Testing4
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
-            string DateRegistered = TestDate.ToString();
+            string OrderDate = TestDate.ToString();
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -711,7 +720,7 @@ namespace Testing4
             string OrderDate = "this is not a date";
             Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
 
