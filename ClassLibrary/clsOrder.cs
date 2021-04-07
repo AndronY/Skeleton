@@ -182,6 +182,8 @@ namespace ClassLibrary
             }
         }
 
+        public bool Exists { get; internal set; }
+
         public bool Find(int OrderID)
         {
             //sets private data members to test the data value
