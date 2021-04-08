@@ -2,9 +2,7 @@
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-//When i added the "Assert.AreEqual(Error, "");" and ran the test, i had errors.
-//However when this code is deleted, the tests pass. I dont know why this is happening..
-//There are no errors on the code, just when its running to see if the tests pass.
+
 
 
 namespace Testing4
