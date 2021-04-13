@@ -6,28 +6,28 @@ namespace ClassLibrary
 {
     public class clsStock
     {
-        private Boolean mActive;
-        public bool Active
+        private Boolean mInStock;
+        public bool InStock
         {
             get
             {
-                return mActive;
+                return mInStock;
             }
             set
             {
-                mActive = value;
+                mInStock = value;
             }
         }
-        private DateTime mDateAdded;
-        public DateTime DateAdded
+        private DateTime mDateListed;
+        public DateTime DateListed
         {
             get
             {
-                return mDateAdded;
+                return mDateListed;
             }
             set
             {
-                mDateAdded = value;
+                mDateListed = value;
             }
         }
         private Decimal mPrice;
@@ -88,14 +88,32 @@ namespace ClassLibrary
 
         public bool Find(int ProductID)
         {
-            mProductID = 21;
-            mPrice = 26;
-            mProductDescription = "Test Description";
-            mStockQuantity = 21;
-            mDateAdded = Convert.ToDateTime("30 / 08 / 2022");
-            mActive = true;
-            return true;
+            //mProductID = 21;
+            //mPrice = 26;
+            //mProductDescription = "Test Description";
+            //mStockQuantity = 21;
+            //mDateAdded = Convert.ToDateTime("30 / 08 / 2022");
+            //mActive = true;
+            //return true;
             //throw new NotImplementedException();
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductID", ProductID);
+            DB.Execute("spoc_tbleAddress_FilterByStockID");
+            if (DB.Count == 1)
+            {
+                mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+                mProductDescription = Convert.ToString(DB.DataTable.Rows[0]["ProductDescription"]);
+                mStockQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["StockQuantity"]);
+                mDateListed = Convert.ToDateTime(DB.DataTable.Rows[0]["DateListed"]);
+                mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
+                return true;
+                //throw new NotImplementedException();
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
