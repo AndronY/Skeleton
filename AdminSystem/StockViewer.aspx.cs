@@ -15,6 +15,6 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(Astock.ProductDescription);
         Response.Write(Astock.Price);
         Response.Write(Astock.StockQuantity);
-        Response.Write(Astock.DateAdded);
+        Response.Write(Astock.DateListed);
     }
 }

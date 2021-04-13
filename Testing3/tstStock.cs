@@ -18,16 +18,16 @@ namespace Testing3
         {
             clsStock AStock = new clsStock();
             Boolean TestData = true;
-            AStock.Active = TestData;
-            Assert.AreEqual(AStock.Active, TestData);
+            AStock.InStock = TestData;
+            Assert.AreEqual(AStock.InStock, TestData);
         }
         [TestMethod]
         public void DateAddedPropertyOk()
         {
             clsStock AStock = new clsStock();
             DateTime TestData = DateTime.Now.Date;
-            AStock.DateAdded = TestData;
-            Assert.AreEqual(AStock.DateAdded, TestData);
+            AStock.DateListed = TestData;
+            Assert.AreEqual(AStock.DateListed, TestData);
         }
         [TestMethod]
         public void StockQuantityPropertyOk()
@@ -58,7 +58,7 @@ namespace Testing3
         {
             clsStock AStock = new clsStock();
             Boolean Found = false;
-            Int32 ProductID = 21;
+            Int32 ProductID = 1;
             Found = AStock.Find(ProductID);
             Assert.IsTrue(Found);
         }
@@ -68,9 +68,9 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductID = 21;
+            Int32 ProductID = 6;
             Found = AStock.Find(ProductID);
-            if (AStock.ProductID != 21)
+            if (AStock.ProductID != 6)
             {
                 OK = false;
             }
@@ -82,9 +82,9 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductID = 21;
+            Int32 ProductID = 5;
             Found = AStock.Find(ProductID);
-            if (AStock.ProductDescription != "Test Description")
+            if (AStock.ProductDescription != "Microwave 3000")
             {
                 OK = false;
             }
@@ -96,9 +96,9 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductID = 21;
+            Int32 ProductID = 3;
             Found = AStock.Find(ProductID);
-            if (AStock.DateAdded != Convert.ToDateTime("30/08/2022"))
+            if (AStock.DateListed != Convert.ToDateTime("05/02/2021"))
             {
                 OK = false;
             }
@@ -110,9 +110,9 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductID = 21;
+            Int32 ProductID = 3;
             Found = AStock.Find(ProductID);
-            if (AStock.StockQuantity != 21)
+            if (AStock.StockQuantity != 4)
             {
                 OK = false;
             }
@@ -124,23 +124,23 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductID = 21;
+            Int32 ProductID = 4;
             Found = AStock.Find(ProductID);
-            if (AStock.Price != Convert.ToDecimal(26))
+            if (AStock.Price != Convert.ToDecimal(1010))
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestActiveFound()
+        public void TestInStockFound()
         {
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductID = 21;
+            Int32 ProductID = 1;
             Found = AStock.Find(ProductID);
-            if (AStock.Active != true)
+            if (AStock.InStock != true)
             {
                 OK = false;
             }

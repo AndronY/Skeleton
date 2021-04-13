@@ -20,12 +20,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string ProductDescription = txtProductDescription.Text;
         string Price = txtPrice.Text;
         string StockQuantity = txtStockQuantity.Text;
-        string DateAdded = txtDateListed.Text;
+        string DateListed = txtDateListed.Text;
 
         AStock.ProductDescription = ProductDescription;
         AStock.Price = Convert.ToDecimal(Price);
         AStock.StockQuantity = Convert.ToInt32(StockQuantity);
-        AStock.DateAdded = Convert.ToDateTime(DateAdded);
+        AStock.DateListed = Convert.ToDateTime(DateListed);
 
         Session["AStock"] = AStock;
         Response.Redirect("StockViewer.aspx");
