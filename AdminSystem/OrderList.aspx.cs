@@ -26,6 +26,7 @@ public partial class _1_List : System.Web.UI.Page
      void DisplayOrder()
     {
 
+
     //create an instance of the Order Collection
     ClsOrderCollection Orders = new ClsOrderCollection();
         //set the data source to the list of Orders in the collection
