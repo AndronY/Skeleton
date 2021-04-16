@@ -5,6 +5,15 @@ namespace ClassLibrary
 {
     public class ClsOrderCollection
     {
+        List<ClsOrder> mOrderList = new List<ClsOrder>();
+        ClsOrder mthisOrder = new ClsOrder();
+
+        public ClsOrder ThisOrder { get; set; }
+      
+         
+
+
+
         //constructor for the class
         public ClsOrderCollection()
         {
@@ -24,14 +33,12 @@ namespace ClassLibrary
                 //create a blank Order
                 ClsOrder AnOrder = new ClsOrder();
                 //reads in the fields from the current record
-                AnOrder.Exists = Convert.ToBoolean(DB.DataTable.Rows[Index]["Exists"]);
-
                 AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
                 AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
                 AnOrder.OrderShipped = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderShipped"]);
-                AnOrder.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index][" CustomerID "]);
-                AnOrder.ShippingAddress = Convert.ToString(DB.DataTable.Rows[Index][" ShippingAddress "]);
-                AnOrder.OrderStatus = Convert.ToString(DB.DataTable.Rows[Index][" OrderStatus "]);
+                AnOrder.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                AnOrder.ShippingAddress = Convert.ToString(DB.DataTable.Rows[Index]["ShippingAddress"]);
+                AnOrder.OrderStatus = Convert.ToString(DB.DataTable.Rows[Index]["OrderStatus"]);
 
                 //add the record to the private data member
                 mOrderList.Add(AnOrder);
@@ -43,7 +50,8 @@ namespace ClassLibrary
 
         }
 
-        List<ClsOrder> mOrderList = new List<ClsOrder>();
+
+ 
 
         //public property for the Order list 
         public List<ClsOrder> OrderList
@@ -75,6 +83,6 @@ namespace ClassLibrary
 
 
 
-        public ClsOrder ThisOrder { get; set; }
     }
+    
 }

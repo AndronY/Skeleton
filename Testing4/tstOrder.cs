@@ -12,7 +12,7 @@ namespace Testing4
     {
        //Good Test Data
        //creates some test data to pass to the method
-        string OrderID = "36578419";
+        string OrderID = "1";
         string CustomerID = "45879632";
         string ShippingAddress = "64 potter Lane ";
         string OrderDate = DateTime.Now.Date.ToString();

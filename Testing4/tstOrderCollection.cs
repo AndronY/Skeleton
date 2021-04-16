@@ -12,6 +12,13 @@ namespace Testing4
     [TestClass]
     public class tstOrderCollection
     {
+        //Good Test Data
+        //creates some test data to pass to the method
+        string OrderID = "1";
+        string CustomerID = "45879632";
+        string ShippingAddress = "64 potter Lane ";
+        string OrderDate = DateTime.Now.Date.ToString();
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -26,11 +33,11 @@ namespace Testing4
             List<ClsOrder> TestList = new List<ClsOrder>();
             ClsOrder TestItem = new ClsOrder();
             TestItem.OrderID = 1;
-            TestItem.CustomerID = 1;
-            TestItem.ShippingAddress = "Test street";
-            TestItem.OrderStatus = "Dispatched";
+            TestItem.CustomerID = 45879632;
+            TestItem.ShippingAddress = "64 potter Lane";
+            TestItem.OrderStatus = "Pending";
             TestItem.OrderDate = DateTime.Now.Date;
-            TestItem.OrderShipped = true;
+            TestItem.OrderShipped = false;
             TestList.Add(TestItem);
             AllOrder.OrderList = TestList;
             Assert.AreEqual(AllOrder.OrderList, TestList);
@@ -44,16 +51,24 @@ namespace Testing4
             ClsOrder TestOrder = new ClsOrder();
             //Set properties of the test item
             TestOrder.OrderID = 1;
-            TestOrder.CustomerID = 1;
-            TestOrder.ShippingAddress = "Test street";
-            TestOrder.OrderStatus = "Dispatched";
+            TestOrder.CustomerID = 45879632;
+            TestOrder.ShippingAddress = "64 potter Lane";
+            TestOrder.OrderStatus = "Pending";
             TestOrder.OrderDate = DateTime.Now.Date;
-            TestOrder.OrderShipped = true;
+            TestOrder.OrderShipped = false;
             //Assign data to the property
             AllOrder.ThisOrder = TestOrder;
             //Test to see that the two are the same
             Assert.AreEqual(AllOrder.ThisOrder, TestOrder);
 
+        }
+        [TestMethod]
+        public void CountPropertyOK()
+        {
+            ClsOrderCollection AllOrder = new ClsOrderCollection();
+            Int32 SomeCount = 5;
+            AllOrder.Count = SomeCount;
+            Assert.AreEqual(AllOrder.Count, SomeCount);
         }
 
         [TestMethod]
@@ -65,8 +80,19 @@ namespace Testing4
             ClsOrder TestItem = new ClsOrder();
             //Set properties
             TestItem.OrderID = 1;
-            TestItem.CustomerID = 1;
-            TestItem.ShippingAddress = "Test street";
+            TestItem.CustomerID = 45879632;
+            TestItem.ShippingAddress = "64 potter Lane";
+            TestItem.OrderStatus = "Pending";
+            TestItem.OrderDate = DateTime.Now.Date;
+            TestItem.OrderShipped = false;
+            //Add item to test list
+            TestList.Add(TestItem);
+            //reinitialise the object for some new data
+            TestItem = new ClsOrder();
+            //sets its properties
+            TestItem.OrderID = 2;
+            TestItem.CustomerID = 58974136;
+            TestItem.ShippingAddress = "54 Queensville";
             TestItem.OrderStatus = "Dispatched";
             TestItem.OrderDate = DateTime.Now.Date;
             TestItem.OrderShipped = true;
@@ -76,7 +102,17 @@ namespace Testing4
             AllOrder.OrderList = TestList;
             //Test to see if the two are the same
             Assert.AreEqual(AllOrder.Count, TestList.Count);
+        
+        
         }
     }
 }
+
+
+
+
+
+
+    
+
 
