@@ -6,9 +6,9 @@ namespace ClassLibrary
     public class ClsOrderCollection
     {
         List<ClsOrder> mOrderList = new List<ClsOrder>();
+        //private data member for ThisOrder
         ClsOrder mthisOrder = new ClsOrder();
 
-        public ClsOrder ThisOrder { get; set; }
       
          
 
@@ -80,9 +80,40 @@ namespace ClassLibrary
                 //  ;
             }
         }
+        //public property for ThisOrder
+        public ClsOrder ThisOrder
+        {
+            get
+            {
+                //returns the private data
+                return mthisOrder;
+            }
+            set
+            {
+                //sets the private data
+                mthisOrder = value;
+            }
 
+        }
+        public int Add()
+        {
+            //adds the new record to the database based on the values for mThisOrder
+            //sets the primary key value of the new record
+            mthisOrder.OrderID = 123;
+            //returns primary key of new record
+            return mthisOrder.OrderID;
+        }
 
-
+        public void Delete()
+        {
+            //deletes the record pointed to by ThisOrder
+            //connects to the database
+            clsDataConnection DB = new clsDataConnection();
+            //Sets the parameter for stored procedure
+            DB.AddParameter("@OrderID", mthisOrder.OrderID);
+            //executes the stored procedure
+            DB.Execute("sproc_tblOrder_Delete");
+        }
     }
     
 }
