@@ -143,7 +143,7 @@ namespace Testing4
             TestItem.OrderID = 1;
             TestItem.CustomerID = 45879632;
             TestItem.ShippingAddress = "64 potter Lane";
-            TestItem.OrderStatus = "Pending";
+            TestItem.OrderStatus = "pending";
             TestItem.OrderDate = DateTime.Now.Date;
             TestItem.OrderShipped = false;
             //set ThisOrder to the test data
@@ -159,7 +159,7 @@ namespace Testing4
             //now find the record
             Boolean Found = AllOrder.ThisOrder.Find(PrimaryKey);
             //Test to see if the record was not found
-            Assert.IsFalse(Found);
+            Assert.IsTrue(Found);
         }
 
 

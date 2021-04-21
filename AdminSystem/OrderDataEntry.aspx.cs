@@ -45,6 +45,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.OrderID = Convert.ToInt32(OrderID);
             //capture the CustomerID
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
+            //creates new instance of OrderCollection
+            ClsOrderCollection OrderList = new ClsOrderCollection();
+            //Sets the ThisOrder property
+            OrderList.ThisOrder = AnOrder;
+            //adds new record
+            OrderList.Add();
+            //redirects back to listpage
+            Response.Redirect("OrderList.aspx");
 
 
             //store the Order in the session object

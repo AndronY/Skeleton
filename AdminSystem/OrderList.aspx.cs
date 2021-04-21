@@ -23,12 +23,12 @@ public partial class _1_List : System.Web.UI.Page
         }
     }
 
-     void DisplayOrder()
+    void DisplayOrder()
     {
 
 
-    //create an instance of the Order Collection
-    ClsOrderCollection Orders = new ClsOrderCollection();
+        //create an instance of the Order Collection
+        ClsOrderCollection Orders = new ClsOrderCollection();
         //set the data source to the list of Orders in the collection
         lstOrderList.DataSource = Orders.OrderList;
         //set the name of the primary key
@@ -37,10 +37,59 @@ public partial class _1_List : System.Web.UI.Page
         lstOrderList.DataTextField = "OrderStatus";
         //bind the data to the list
         lstOrderList.DataBind();
+    }
+
+
+    //event handler for add button
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        //stores -1 into the session object to indicate this is a new record
+        Session["OrderID"] = -1;
+        //redirects to data entry page
+        Response.Redirect("AnOrder.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 OrderID;
+        {
+            if (lstOrderList.SelectedIndex != -1) ;
+            { }
+            OrderID = Convert.ToInt32(lstOrderList.SelectedValue);
+            Session["orderID"] = OrderID;
+            Response.Redirect("AnOrder.aspx");
+        }
+     
+
+        else
+        {
+            lblError.Text = "Please select a record to delete from the list";
+
+        }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 OrderID;
+        {
+            if (lstOrderList.SelectedIndex != -1);
+            { 
+            OrderID = Convert.ToInt32(lstOrderList.SelectedValue);
+            Session["orderID"] = OrderID;
+            Response.Redirect("AnOrder.aspx");
+            
+
+        }
+     
+        else
+        {
+                lblError.Text = "Please select a record to delete from the list";
+            }
+        
+
+        
 }
 
-    
-        }
        
 
 
