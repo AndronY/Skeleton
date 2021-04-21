@@ -93,10 +93,15 @@ namespace ClassLibrary
         public int Add()
         {
             //adds the new record to the database based on the values for mThisOrder
-            //sets the primary key value of the new record
-            mthisOrder.OrderID = 123;
-            //returns primary key of new record
-            return mthisOrder.OrderID;
+            clsDataConnection DB = new clsDataConnection();
+            //sets the prarameters for stored procedures
+            DB.AddParameter("@orderStatus", mthisOrder.OrderStatus);
+            DB.AddParameter("@ShippingAddress", mthisOrder.ShippingAddress);
+            DB.AddParameter("@orderDate", mthisOrder.OrderDate);
+            DB.AddParameter("@OrderShipped", mthisOrder.OrderShipped);
+            DB.AddParameter("@customerID", mthisOrder.CustomerID);
+            //executes query returning of the primary key value
+            return DB.Execute("sproc_tblOrder_Insert");
         }
 
         public void Delete()
@@ -108,6 +113,21 @@ namespace ClassLibrary
             DB.AddParameter("@OrderID", mthisOrder.OrderID);
             //executes the stored procedure
             DB.Execute("sproc_tblOrder_Delete");
+        }
+
+        public void Update()
+        {
+            //adds the new record to the database based on the values for mThisOrder
+            clsDataConnection DB = new clsDataConnection();
+            //sets the prarameters for stored procedures
+            DB.AddParameter("@orderID", mthisOrder.OrderID);
+            DB.AddParameter("@orderStatus", mthisOrder.OrderStatus);
+            DB.AddParameter("@ShippingAddress", mthisOrder.ShippingAddress);
+            DB.AddParameter("@orderDate", mthisOrder.OrderDate);
+            DB.AddParameter("@OrderShipped", mthisOrder.OrderShipped);
+            DB.AddParameter("@customerID", mthisOrder.CustomerID);
+            //executes query returning of the primary key value
+             DB.Execute("sproc_tblOrder_Update");
         }
     }
     
