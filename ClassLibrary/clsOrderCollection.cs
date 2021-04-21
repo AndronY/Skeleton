@@ -9,11 +9,6 @@ namespace ClassLibrary
         //private data member for ThisOrder
         ClsOrder mthisOrder = new ClsOrder();
 
-      
-         
-
-
-
         //constructor for the class
         public ClsOrderCollection()
         {
