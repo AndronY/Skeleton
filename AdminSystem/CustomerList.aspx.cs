@@ -81,7 +81,7 @@ public partial class _1_List : System.Web.UI.Page
             //store the data in the session object
             Session["ID"] = ID;
             //redirect to the delete page
-            Response.Redirect("DeleteCustomer.aspx");
+            Response.Redirect("CustomerConfirmDelete.aspx");
         }
         else //if no record has been selected
         {
