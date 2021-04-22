@@ -52,15 +52,16 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnEdit_Click(object sender, EventArgs e)
     {
         Int32 OrderID;
-        {
-            if (lstOrderList.SelectedIndex != -1) ;
-            { }
-            OrderID = Convert.ToInt32(lstOrderList.SelectedValue);
-            Session["orderID"] = OrderID;
-            Response.Redirect("AnOrder.aspx");
-        }
-     
 
+        if (lstOrderList.SelectedIndex != -1) 
+        {
+
+            OrderID = Convert.ToInt32(lstOrderList.SelectedValue);
+            //stores data in session object
+            Session["orderID"] = OrderID;
+            //redirect to edit page
+            Response.Redirect("AnOrder.aspx");
+        }    
         else
         {
             lblError.Text = "Please select a record to delete from the list";
@@ -71,24 +72,28 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnDelete_Click(object sender, EventArgs e)
     {
         Int32 OrderID;
+
+        if (lstOrderList.SelectedIndex != -1) 
         {
-            if (lstOrderList.SelectedIndex != -1);
-            { 
             OrderID = Convert.ToInt32(lstOrderList.SelectedValue);
             Session["orderID"] = OrderID;
             Response.Redirect("AnOrder.aspx");
-            
+
 
         }
+    
+    
      
         else
         {
-                lblError.Text = "Please select a record to delete from the list";
-            }
-        
+            lblError.Text = "Please select a record to delete from the list";
+        }
 
-        
+
+    
+    }
 }
+
 
        
 

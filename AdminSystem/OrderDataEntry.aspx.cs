@@ -8,11 +8,14 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
-    
+    //variable to store primary key with page level scope
+    Int32 OrderID;
 
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
+
 
     }
 
@@ -29,7 +32,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         //capture the ShippingAddress
         string ShippingAddress = txtShippingAddress.Text;
- 
+
         //variable to store any error messages
         string Error = "";
         //validate the data
@@ -55,10 +58,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Response.Redirect("OrderList.aspx");
 
 
-            //store the Order in the session object
-            Session["AnOrder "] = AnOrder;
-            //navigate to the viewer page
-            Response.Write("OrderViewer.aspx");
+
         }
         else
         {
@@ -72,7 +72,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
 
-        protected void BtnFind_Click(object sender, EventArgs e)
+    protected void BtnFind_Click(object sender, EventArgs e)
     {
         //creates a new instance of ClsOrder
         ClsOrder AnOrder = new ClsOrder();
@@ -97,6 +97,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         }
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+
+    }
+    
+
+
+
+
 }
 
 
