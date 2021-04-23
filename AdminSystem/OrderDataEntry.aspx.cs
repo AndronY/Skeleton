@@ -14,6 +14,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number to be processed
+        OrderID = Convert.ToInt32(Session["OrderID"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (OrderID != -1)
+            {
+                //display the current data for the record
+                DisplayOrder();
+            }
+        }
+    }
+    void DisplayOrder()
+    {
+        //create an instance of the Order collection
+        ClsOrderCollection OrderCollection = new ClsOrderCollection();
+        //find the record to update
+        OrderCollection.ThisOrder.Find(OrderID);
+        //display the data for this record
+        txtOrderID.Text = OrderCollection.ThisOrder.OrderID.ToString();
+        txtOrderDate.Text = OrderCollection.ThisOrder.OrderDate.ToString();
+        txtCustomerID.Text = OrderCollection.ThisOrder.CustomerID.ToString();
+        txtShippingAddress.Text = OrderCollection.ThisOrder.ShippingAddress;
 
 
 
@@ -50,10 +73,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
             //creates new instance of OrderCollection
             ClsOrderCollection OrderList = new ClsOrderCollection();
+            //If this is a new record i.e OrderID = -1 the add the data
+            //if ( OrderID = -1) 
+            //  }
+
             //Sets the ThisOrder property
             OrderList.ThisOrder = AnOrder;
             //adds new record
             OrderList.Add();
+      // }
+        //Otherwise it must be an update
+      // else
+        {
+                //find record to update
+               // OrderList.ThisOrder.Find(OrderID);
+                //Sets the ThisOrder property
+                //OrderList.ThisOrder = AnOrder;
+                //updates the record
+                //OrderList.Update();
+        }
             //redirects back to listpage
             Response.Redirect("OrderList.aspx");
 
