@@ -59,7 +59,7 @@ public partial class _1_List : System.Web.UI.Page
             //gets primary key value of record to edit
             OrderID = Convert.ToInt32(lstOrderList.SelectedValue);
             //stores data in session object
-            Session["orderID"] = OrderID;
+            Session["OrderID"] = OrderID;
             //redirect to edit page
             Response.Redirect("AnOrder.aspx");
         }    
@@ -106,9 +106,51 @@ public partial class _1_List : System.Web.UI.Page
 
 
 
-    
+
+
+
+
+
+    protected void TxtFilter_TextChanged(object sender, EventArgs e)
+    {
 
     }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+     
+        //create an instance of the customer collection
+        ClsOrderCollection OrderCollection = new ClsOrderCollection();
+        OrderCollection.ReportByShippingAddress(txtFilter.Text);
+        //clear any existing filter to tidy up the interface
+        txtFilter.Text = "";
+        lstOrderList.DataSource = OrderCollection.OrderList;
+        //set the name of the primary key
+        lstOrderList.DataValueField = "OrderID";
+        //set the name of the field to display
+        lstOrderList.DataTextField = "ShippingAddress";
+        //bind the data to the list
+        lstOrderList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        //create an instance of the customer collection
+        ClsOrderCollection OrderCollection = new ClsOrderCollection();
+        OrderCollection.ReportByShippingAddress("");
+        //clear any existing filter to tidy up the interface
+        txtFilter.Text = "";
+        lstOrderList.DataSource = OrderCollection.OrderList;
+        //set the name of the primary key
+        lstOrderList.DataValueField = "OrderID";
+        //set the name of the field to display
+        lstOrderList.DataTextField = "ShippingAddress";
+        //bind the data to the list
+        lstOrderList.DataBind();
+    }
+}
+
+
 
 
 

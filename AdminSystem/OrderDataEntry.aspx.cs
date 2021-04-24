@@ -62,20 +62,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
         if (Error == "")
         {
-
-            //capture OrderDate
-            AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
-            //capture ShippingAddress
-            AnOrder.ShippingAddress = ShippingAddress;
             //capture the OrderID
             AnOrder.OrderID = Convert.ToInt32(OrderID);
+            //capture OrderDate
+            AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
             //capture the CustomerID
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
+            //capture ShippingAddress
+            AnOrder.ShippingAddress = ShippingAddress;
+            //capture Order Shipped
+            AnOrder.OrderShipped  = chkOrderShipped.Checked;
             //creates new instance of OrderCollection
             ClsOrderCollection OrderList = new ClsOrderCollection();
+
             //If this is a new record i.e OrderID = -1 the add the data
-            //if ( OrderID = -1) 
-            //  }
+           //if ( OrderID == -1) 
+             // }
 
             //Sets the ThisOrder property
             OrderList.ThisOrder = AnOrder;
@@ -136,7 +138,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
-    protected void btnCancel_Click(object sender, EventArgs e)
+    protected void BtnCancel_Click(object sender, EventArgs e)
     {
 
     }
