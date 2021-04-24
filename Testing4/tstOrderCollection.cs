@@ -66,7 +66,7 @@ namespace Testing4
         public void CountPropertyOK()
         {
             ClsOrderCollection AllOrder = new ClsOrderCollection();
-            Int32 SomeCount = 19;
+            Int32 SomeCount = 9;
             AllOrder.Count = SomeCount;
             Assert.AreEqual(AllOrder.Count, SomeCount);
         }
@@ -206,10 +206,68 @@ namespace Testing4
 
 
         }
+        [TestMethod]
+        public void ReportByShippingAddressMethodOK()
+        {
+            //creates an instance of class we want to create
+            ClsOrderCollection AllOrder = new ClsOrderCollection();
+            //creates an instance of the filtered data
+            ClsOrderCollection FilteredOrder = new ClsOrderCollection();
+            //applies a blank string (should return all the redords);
+            FilteredOrder.ReportByShippingAddress("");
+            //tests to see of the two values are the same
+            Assert.AreEqual(AllOrder.Count, FilteredOrder.Count);
 
 
         }
-    }
+        [TestMethod]
+        public void ReportByShippingAddressNoneFound()
+        {
+            //creates an instance of the filtered data
+            ClsOrderCollection FilteredOrder = new ClsOrderCollection();
+            //applies the Shipping Address that does not exist
+            FilteredOrder.ReportByShippingAddress("xx xxxx xxxxxx");
+            //tests to see that there are no records
+            Assert.AreEqual(0, FilteredOrder.Count);
+
+
+        }
+        [TestMethod]
+        public void ReportByShippingAddressTestDataFound()
+        {
+            //creates an instance of the filtered data
+            ClsOrderCollection FilteredOrder = new ClsOrderCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply a Shipping Address which does not exist
+            FilteredOrder.ReportByShippingAddress("xx xxxx xxxxxx");
+            //check if that is the correct number of records that are found
+            if (FilteredOrder.Count == 2)
+            {
+                //checks the first record is OrderID 4
+                if (FilteredOrder.OrderList[0].OrderID != 4)
+                {
+                    OK = false;
+                }
+                //checks the first record is OrderID 5
+                if (FilteredOrder.OrderList[0].OrderID != 4)
+                {
+                    OK = false;
+
+                }
+            }
+            else
+            {
+                OK = false;
+
+            }
+
+            //tests to see that there are no records
+            Assert.IsFalse(OK);
+        }
+        }
+        }
+
 
 
 

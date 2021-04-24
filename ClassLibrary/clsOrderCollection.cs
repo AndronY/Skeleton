@@ -12,41 +12,22 @@ namespace ClassLibrary
         //constructor for the class
         public ClsOrderCollection()
         {
-            // var for the index
+            //var for the index
             Int32 Index = 0;
-            //var to store the count
+            //var to store the record count
             Int32 RecordCount = 0;
             //object for the data connection
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblOrder_SelectAll");
-            //get the count of records
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                //create a blank Order
-                ClsOrder AnOrder = new ClsOrder();
-                //reads in the fields from the current record
-                AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
-                AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
-                AnOrder.OrderShipped = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderShipped"]);
-                AnOrder.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
-                AnOrder.ShippingAddress = Convert.ToString(DB.DataTable.Rows[Index]["ShippingAddress"]);
-                AnOrder.OrderStatus = Convert.ToString(DB.DataTable.Rows[Index]["OrderStatus"]);
+            //populate the array list with the data table
+            PopulateArray(DB);
 
-                //add the record to the private data member
-                mOrderList.Add(AnOrder);
-                //point at the next record
-                Index++;
-
-
-            }
 
         }
 
 
- 
+
 
         //public property for the Order list 
         public List<ClsOrder> OrderList
@@ -127,8 +108,63 @@ namespace ClassLibrary
             DB.AddParameter("@OrderShipped", mthisOrder.OrderShipped);
             DB.AddParameter("@customerID", mthisOrder.CustomerID);
             //executes query returning of the primary key value
-             DB.Execute("sproc_tblOrder_Update");
+            DB.Execute("sproc_tblOrder_Update");
+        }
+        public void ReportByShippingAddress(string ShippingAddress)
+        {
+            //Filters the record based on full or partial Shipping Address
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ShippingAddress", ShippingAddress);
+            //executes the stroed procedure
+            DB.Execute("sproc_tblOrder_FilterByShippingAddress");
+            //populate the array list with the data table
+            PopulateArray(DB);
+
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            //Populates the array List based on the data table in the parameter DB
+            // var for the index
+            Int32 Index = 0;
+            //var to store the count
+            Int32 RecordCount = 0;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the Private Array list
+            mOrderList = new List<ClsOrder>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank Order
+                ClsOrder AnOrder = new ClsOrder();
+                //reads in the fields from the current record
+                AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
+                AnOrder.OrderShipped = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderShipped"]);
+                AnOrder.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                AnOrder.ShippingAddress = Convert.ToString(DB.DataTable.Rows[Index]["ShippingAddress"]);
+                AnOrder.OrderStatus = Convert.ToString(DB.DataTable.Rows[Index]["OrderStatus"]);
+
+                //add the record to the private data member
+                mOrderList.Add(AnOrder);
+                //point at the next record
+                Index++;
+            }
         }
     }
-    
 }
+            
+        
+    
+
+    
+
+            
+
+
+            
+
+    
+    
+
