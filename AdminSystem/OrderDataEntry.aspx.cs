@@ -11,6 +11,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     //variable to store primary key with page level scope
     Int32 OrderID;
 
+    //This had to be implemented otherwise my code on lines 81 would not have worked.
     public int OrderShipped { get; private set; }
 
     protected void Page_Load(object sender, EventArgs e)
