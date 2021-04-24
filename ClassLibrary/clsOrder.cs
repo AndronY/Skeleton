@@ -43,7 +43,7 @@ namespace ClassLibrary
 
         public string Valid(string orderID, string orderDate, string customerID, string shippingAddress)
         {
-            //Creates a astring variable to store the error
+            //Creates a string variable to store the error
             String Error = "";
             DateTime DateTemp;
             //if OrderID is blank
@@ -182,7 +182,6 @@ namespace ClassLibrary
             }
         }
 
-        public bool Exists { get; internal set; }
 
         public bool Find(int OrderID)
         {

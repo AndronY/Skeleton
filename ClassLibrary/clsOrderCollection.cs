@@ -74,6 +74,7 @@ namespace ClassLibrary
         public int Add()
         {
             //adds the new record to the database based on the values for mThisOrder
+            //connects to the database
             clsDataConnection DB = new clsDataConnection();
             //sets the prarameters for stored procedures
             DB.AddParameter("@orderStatus", mthisOrder.OrderStatus);
@@ -99,6 +100,7 @@ namespace ClassLibrary
         public void Update()
         {
             //adds the new record to the database based on the values for mThisOrder
+            //connects to the database
             clsDataConnection DB = new clsDataConnection();
             //sets the prarameters for stored procedures
             DB.AddParameter("@orderID", mthisOrder.OrderID);

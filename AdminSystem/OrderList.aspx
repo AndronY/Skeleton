@@ -38,6 +38,20 @@
         </p>
         <p>
             
+            <asp:Label ID="Label1" runat="server" Text="Enter a Shipping Address"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="txtFilter" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+        </p>
+        <p>
+            
+            <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply" />
+&nbsp;<asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear" />
+        </p>
+        <p>
+            
+            &nbsp;</p>
+        <p>
+            
             &nbsp;</p>
         <p>
             &nbsp;</p>
