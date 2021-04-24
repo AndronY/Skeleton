@@ -11,6 +11,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     //variable to store primary key with page level scope
     Int32 OrderID;
 
+    public int OrderShipped { get; private set; }
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -76,23 +77,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ClsOrderCollection OrderList = new ClsOrderCollection();
 
             //If this is a new record i.e OrderID = -1 the add the data
-           //if ( OrderID == -1) 
-             // }
+           if ( OrderShipped  == -1) 
+              {
 
             //Sets the ThisOrder property
             OrderList.ThisOrder = AnOrder;
             //adds new record
             OrderList.Add();
-      // }
+       }
         //Otherwise it must be an update
-      // else
+       else
         {
                 //find record to update
-               // OrderList.ThisOrder.Find(OrderID);
+                OrderList.ThisOrder.Find(OrderShipped);
                 //Sets the ThisOrder property
-                //OrderList.ThisOrder = AnOrder;
+                OrderList.ThisOrder = AnOrder;
                 //updates the record
-                //OrderList.Update();
+                OrderList.Update();
         }
             //redirects back to listpage
             Response.Redirect("OrderList.aspx");
