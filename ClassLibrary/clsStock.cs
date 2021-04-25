@@ -79,23 +79,59 @@ namespace ClassLibrary
             }
         }
 
-        //public bool Active { get; set; }
-        //public DateTime DateAdded { get; set; }
-        //public int StockQuantity { get; set; }
-        //public string ProductDescription { get; set; }
-        //public decimal Price { get; set; }
+        public string Valid(string productDescription,string dateAdded,
+            string stockQuantity,string price)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            if (productDescription.Length == 0)
+            {
+                Error = Error + "There needs to be a product description: ";
+            }
+            if (productDescription.Length > 50)
+            {
+                Error = Error + "The product description needs to be less than 50 characters ";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "Date cannot be in the past: ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "Date cannot be in the future: ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date is not valid: ";
+            }
+
+            try
+            {
+                if (stockQuantity.Length == 0)
+                {
+                    Error = Error + "Stock Quantity cannot be nothing: ";
+                }
+                if (Convert.ToInt64(stockQuantity) >= int.MinValue)
+                { }
+            }
+            catch
+            {
+                Error = Error + "The quantity is not valid: ";
+            }
+            if (price.Length == 0)
+            {
+                Error = Error + "Price cannot be nothing: ";
+            }
+            return Error;
+        }
 
 
         public bool Find(int ProductID)
         {
-            //mProductID = 21;
-            //mPrice = 26;
-            //mProductDescription = "Test Description";
-            //mStockQuantity = 21;
-            //mDateAdded = Convert.ToDateTime("30 / 08 / 2022");
-            //mActive = true;
-            //return true;
-            //throw new NotImplementedException();
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@ProductID", ProductID);
             DB.Execute("spoc_tbleAddress_FilterByStockID");

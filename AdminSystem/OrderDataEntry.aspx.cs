@@ -8,11 +8,39 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
-    
+    //variable to store primary key with page level scope
+    Int32 OrderID;
 
+    //This had to be implemented otherwise my code on lines 81 would not have worked.
+    public int OrderShipped { get; private set; }
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number to be processed
+        OrderID = Convert.ToInt32(Session["OrderID"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (OrderID != -1)
+            {
+                //display the current data for the record
+                DisplayOrder();
+            }
+        }
+    }
+    void DisplayOrder()
+    {
+        //create an instance of the Order collection
+        ClsOrderCollection OrderCollection = new ClsOrderCollection();
+        //find the record to update
+        OrderCollection.ThisOrder.Find(OrderID);
+        //display the data for this record
+        txtOrderID.Text = OrderCollection.ThisOrder.OrderID.ToString();
+        txtOrderDate.Text = OrderCollection.ThisOrder.OrderDate.ToString();
+        txtCustomerID.Text = OrderCollection.ThisOrder.CustomerID.ToString();
+        txtShippingAddress.Text = OrderCollection.ThisOrder.ShippingAddress;
+
+
 
     }
 
@@ -29,36 +57,50 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         //capture the ShippingAddress
         string ShippingAddress = txtShippingAddress.Text;
- 
+
         //variable to store any error messages
         string Error = "";
         //validate the data
         Error = AnOrder.Valid(OrderID, OrderDate, CustomerID, ShippingAddress);
         if (Error == "")
         {
-
-            //capture OrderDate
-            AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
-            //capture ShippingAddress
-            AnOrder.ShippingAddress = ShippingAddress;
             //capture the OrderID
             AnOrder.OrderID = Convert.ToInt32(OrderID);
+            //capture OrderDate
+            AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
             //capture the CustomerID
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
+            //capture ShippingAddress
+            AnOrder.ShippingAddress = ShippingAddress;
+            //capture Order Shipped
+            AnOrder.OrderShipped  = chkOrderShipped.Checked;
             //creates new instance of OrderCollection
             ClsOrderCollection OrderList = new ClsOrderCollection();
+
+            //If this is a new record i.e OrderID = -1 the add the data
+           if ( OrderShipped  == -1) 
+              {
+
             //Sets the ThisOrder property
             OrderList.ThisOrder = AnOrder;
             //adds new record
             OrderList.Add();
+       }
+        //Otherwise it must be an update
+       else
+        {
+                //find record to update
+                OrderList.ThisOrder.Find(OrderShipped);
+                //Sets the ThisOrder property
+                OrderList.ThisOrder = AnOrder;
+                //updates the record
+                OrderList.Update();
+        }
             //redirects back to listpage
             Response.Redirect("OrderList.aspx");
 
 
-            //store the Order in the session object
-            Session["AnOrder "] = AnOrder;
-            //navigate to the viewer page
-            Response.Write("OrderViewer.aspx");
+
         }
         else
         {
@@ -72,7 +114,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
 
-        protected void BtnFind_Click(object sender, EventArgs e)
+    protected void BtnFind_Click(object sender, EventArgs e)
     {
         //creates a new instance of ClsOrder
         ClsOrder AnOrder = new ClsOrder();
@@ -97,6 +139,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         }
     }
+
+    protected void BtnCancel_Click(object sender, EventArgs e)
+    {
+
+    }
+    
+
+
+
+
 }
 
 
