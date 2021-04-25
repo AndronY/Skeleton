@@ -253,7 +253,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string FullName = "";
-            FullName = FullName.PadRight(500, 'a');
+            FullName = FullName.PadRight(300, 'a');
             Error = ACustomer.Valid(FullName, Address, EmailAddress, DateRegistered);
             Assert.AreNotEqual(Error, "");
         }
@@ -338,7 +338,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string Address = "";
-            Address = Address.PadRight(500, 'a');
+            Address = Address.PadRight(300, 'a');
             Error = ACustomer.Valid(FullName, Address, EmailAddress, DateRegistered);
             Assert.AreNotEqual(Error, "");
         }
@@ -423,7 +423,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string EmailAddress = "";
-            EmailAddress = EmailAddress.PadRight(500, 'a');
+            EmailAddress = EmailAddress.PadRight(300, 'a');
             Error = ACustomer.Valid(FullName, Address, EmailAddress, DateRegistered);
             Assert.AreNotEqual(Error, "");
         }
