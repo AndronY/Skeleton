@@ -17,7 +17,7 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
         OrderID = Convert.ToInt32(Session["OrderID"]);
     }
 
-    protected void btnYes_Click(object sender, EventArgs e)
+    protected void BtnYes_Click(object sender, EventArgs e)
     {
         //create an instance of the Order Collection
         ClsOrderCollection OrderBook = new ClsOrderCollection();
@@ -26,6 +26,6 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
         //deletes the record
         OrderBook.Delete();
         //Redirects back to the main page
-        Response.Redirect("OrderList");
+        Response.Redirect("OrderList.aspx");
     }
 }

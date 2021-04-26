@@ -186,11 +186,11 @@ namespace ClassLibrary
         public bool Find(int OrderID)
         {
             //sets private data members to test the data value
-            mOrderID = 21;
-            mOrderDate = Convert.ToDateTime("16/09/2015");
+            mOrderID = 5;
+            mOrderDate = Convert.ToDateTime("16/02/2021");
             mOrderShipped = Convert.ToBoolean(true);
-            mCustomerID =21;
-            mShippingAddress ="Test Street";
+            mCustomerID =5;
+            mShippingAddress ="64 potter Lane";
             mOrderStatus = "Dispatched";
 
             //always returns true

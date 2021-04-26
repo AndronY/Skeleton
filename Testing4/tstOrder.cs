@@ -140,11 +140,11 @@ namespace Testing4
             //Boolean variable to record if data is okay(Assume it is)
             Boolean Okay = true;
             //Create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 5;
             //Invoke the method
             Found = AnOrder.Find(OrderID);
             //Check the Order ID
-            if (AnOrder.OrderID != 21)
+            if (AnOrder.OrderID != 5)
             {
                 Okay = false;
             }
@@ -162,11 +162,11 @@ namespace Testing4
             //Boolean variable to record if data is okay(Assume it is)
             Boolean Okay = true;
             //Create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 5;
             //Invoke the method
             Found = AnOrder.Find(OrderID);
             //Check the Order Date
-            if (AnOrder.OrderDate != Convert.ToDateTime("16/09/2015"))
+            if (AnOrder.OrderDate != Convert.ToDateTime("16/02/2021"))
             {
                 Okay = false;
             }
@@ -207,11 +207,11 @@ namespace Testing4
             //boolean variable to record if data is OK (assume it is)
             Boolean Okay = true;
             //create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 5;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the Customer ID
-            if (AnOrder.CustomerID != 21)
+            if (AnOrder.CustomerID != 5)
             {
                 Okay = false;
             }

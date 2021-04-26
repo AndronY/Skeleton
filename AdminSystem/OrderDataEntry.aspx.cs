@@ -8,11 +8,12 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    
+
+    public int OrderShipped { get; private set; }
+
     //variable to store primary key with page level scope
     Int32 OrderID;
-
-    //This had to be implemented otherwise my code on lines 81 would not have worked.
-    public int OrderShipped { get; private set; }
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -140,15 +141,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
-    protected void BtnCancel_Click(object sender, EventArgs e)
-    {
-
-    }
     
 
 
 
 
+
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+
+    }
 }
 
 
