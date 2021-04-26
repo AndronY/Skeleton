@@ -40,16 +40,16 @@ public partial class _1_List : System.Web.UI.Page
     }
 
     //event handler for add button
-    protected void btnAdd_Click(object sender, EventArgs e)
+    protected void BtnAdd_Click(object sender, EventArgs e)
     {
         //stores -1 into the session object to indicate this is a new record
         Session["OrderID"] = -1;
         //redirects to data entry page
-        Response.Redirect("AnOrder.aspx");
+        Response.Redirect("OrderDataEntry.aspx");
     }
 
 
-    protected void btnEdit_Click(object sender, EventArgs e)
+    protected void BtnEdit_Click(object sender, EventArgs e)
     {
         //Var stores primary key value of record to be edited
         Int32 OrderID;
@@ -61,17 +61,17 @@ public partial class _1_List : System.Web.UI.Page
             //stores data in session object
             Session["OrderID"] = OrderID;
             //redirect to edit page
-            Response.Redirect("AnOrder.aspx");
+            Response.Redirect("OrderDataEntry.aspx");
         }    
         else//if no record has been selected
         {
             //display the error message
-            lblError.Text = "Please select a record to delete from the list";
+            lblError.Text = "Please select a record to edit from the list";
 
         }
     }
 
-    protected void btnDelete_Click(object sender, EventArgs e)
+    protected void BtnDelete_Click(object sender, EventArgs e)
     {
         //Var stores primary key value of record to be delete
         Int32 OrderID;
@@ -83,10 +83,10 @@ public partial class _1_List : System.Web.UI.Page
             OrderID = Convert.ToInt32(lstOrderList.SelectedValue);
 
             //stores data in session object
-            Session["orderID"] = OrderID;
+            Session["OrderID"] = OrderID;
 
             //redirect to delete page
-            Response.Redirect("AnOrder.aspx");
+            Response.Redirect("OrderConfirmDelete.aspx");
 
 
         }
@@ -116,7 +116,7 @@ public partial class _1_List : System.Web.UI.Page
 
     }
 
-    protected void btnApply_Click(object sender, EventArgs e)
+    protected void BtnApply_Click(object sender, EventArgs e)
     {
      
         //create an instance of the customer collection
@@ -133,7 +133,7 @@ public partial class _1_List : System.Web.UI.Page
         lstOrderList.DataBind();
     }
 
-    protected void btnClear_Click(object sender, EventArgs e)
+    protected void BtnClear_Click(object sender, EventArgs e)
     {
         //create an instance of the customer collection
         ClsOrderCollection OrderCollection = new ClsOrderCollection();

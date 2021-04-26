@@ -18,7 +18,7 @@
         &nbsp;</p>
     <form id="form1" runat="server">
     <p>
-            <asp:ListBox ID="lstOrderList" runat="server" style="z-index: 1; left: 7px; top: 1px; position:absolute; Height: 291px; Width: 265px"></asp:ListBox>
+            <asp:ListBox ID="lstOrderList" runat="server" style="z-index: 1; left: 7px; top: 1px; position:absolute; Height: 175px; Width: 269px"></asp:ListBox>
             </p>
     <p>
         &nbsp;</p>
@@ -30,9 +30,9 @@
             <asp:Button ID="BtnAdd" runat="server" Text="Add" />
 &nbsp;&nbsp;&nbsp;
             
-            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
+            <asp:Button ID="btnEdit" runat="server" Text="Edit" />
             &nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" />
+            <asp:Button ID="btnDelete" runat="server" Text="Delete"  />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
@@ -40,12 +40,12 @@
             
             <asp:Label ID="Label1" runat="server" Text="Enter a Shipping Address"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtFilter" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="txtFilter" runat="server"></asp:TextBox>
         </p>
         <p>
             
-            <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply" />
-&nbsp;<asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear" />
+            <asp:Button ID="btnApply" runat="server"  Text="Apply" />
+&nbsp;<asp:Button ID="btnClear" runat="server"  Text="Clear" />
         </p>
         <p>
             

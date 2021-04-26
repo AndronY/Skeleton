@@ -14,9 +14,9 @@ namespace Testing4
     {
         //Good Test Data
         //creates some test data to pass to the method
-        string OrderID = "1";
-        string CustomerID = "45879632";
-        string ShippingAddress = "64 potter Lane ";
+        string OrderID = "2";
+        string CustomerID = "58974136";
+        string ShippingAddress = "54 Queensville ";
         string OrderDate = DateTime.Now.Date.ToString();
 
         [TestMethod]
