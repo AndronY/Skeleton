@@ -125,14 +125,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
-    protected void btnCustomerList_Click(object sender, EventArgs e)
+    protected void btnCancel_Click(object sender, EventArgs e)
     {
         //redirect back to the listpage
         Response.Redirect("CustomerList.aspx");
-    }
-
-    protected void btnCancel_Click(object sender, EventArgs e)
-    {
-
     }
 }

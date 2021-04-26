@@ -33,9 +33,6 @@
         </p>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
         <asp:Button ID="btnCancel" runat="server" style="margin-left: 7px" Text="Cancel" OnClick="btnCancel_Click" />
-        <p>
-            <asp:Button ID="btnCustomerList" runat="server" OnClick="btnCustomerList_Click" Text="View Customers" />
-        </p>
     </form>
 </body>
 </html>
