@@ -352,6 +352,7 @@ namespace Testing2
             Address = Address.PadRight(25, 'a');
             Error = ACustomer.Valid(FullName, Address, EmailAddress, DateRegistered);
             Assert.AreEqual(Error, "");
+
         }
 
         [TestMethod]
