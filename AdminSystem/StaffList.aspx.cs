@@ -44,7 +44,7 @@ public partial class _1_List : System.Web.UI.Page
         //var to store the primary key value of the record to be edited
         Int32 StaffId;
         //if a record has been selected from the list
-        if (lstStaffList.SelectedIndex != 1)
+        if (lstStaffList.SelectedIndex != -1)
         {
             //get the primary key value of the record to edit
             StaffId = Convert.ToInt32(lstStaffList.SelectedValue);
