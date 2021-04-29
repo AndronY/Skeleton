@@ -21,16 +21,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Price = txtPrice.Text;
         string StockQuantity = txtStockQuantity.Text;
         string DateListed = txtDateListed.Text;
+        string Error = "";
+        Error = AStock.Valid(ProductDescription, Price, StockQuantity, DateListed);
+        if (Error == "")
+        {
+            AStock.ProductDescription = ProductDescription;
+            AStock.Price = Convert.ToDecimal(Price);
+            AStock.StockQuantity = Convert.ToInt32(StockQuantity);
+            AStock.DateListed = Convert.ToDateTime(DateListed);
 
-        AStock.ProductDescription = ProductDescription;
-        AStock.Price = Convert.ToDecimal(Price);
-        AStock.StockQuantity = Convert.ToInt32(StockQuantity);
-        AStock.DateListed = Convert.ToDateTime(DateListed);
-
-        Session["AStock"] = AStock;
-        Response.Redirect("StockViewer.aspx");
-
-
+            Session["AStock"] = AStock;
+            Response.Write("StockViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
