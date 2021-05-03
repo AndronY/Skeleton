@@ -27,12 +27,12 @@
         <p>
             
             &nbsp;&nbsp;&nbsp;
-            <asp:Button ID="BtnAdd" runat="server" Text="Add" />
+            <asp:Button ID="BtnAdd" runat="server" OnClick="BtnAdd_Click" Text="Add" />
 &nbsp;&nbsp;&nbsp;
             
-            <asp:Button ID="btnEdit" runat="server" Text="Edit" />
+            <asp:Button ID="btnEdit" runat="server"  OnClick="BtnEdit_Click" Text="Edit"/>
             &nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnDelete" runat="server" Text="Delete"  />
+            <asp:Button ID="btnDelete" runat="server" OnClick="BtnDelete_Click" Text="Delete"  />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
@@ -44,8 +44,8 @@
         </p>
         <p>
             
-            <asp:Button ID="btnApply" runat="server"  Text="Apply" />
-&nbsp;<asp:Button ID="btnClear" runat="server"  Text="Clear" />
+            <asp:Button ID="btnApply" runat="server"  OnClick="BtnApply_Click" Text="Apply" />
+&nbsp;<asp:Button ID="btnClear" runat="server" OnClick="BtnClear_Click"  Text="Clear" />
         </p>
         <p>
             
