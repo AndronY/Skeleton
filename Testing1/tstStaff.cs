@@ -375,7 +375,7 @@ namespace Testing1
             String Error = "";
             //create some test data to pass to the method
             string Name = "";
-            Name = Name.PadRight(500, 'a');//this should be okay and by that meaning it should fail
+            Name = Name.PadRight(500, 'a');//this should also be okay
             //invoke the method
             Error = AStaff.Valid(Name, JobRole, Email, DateStarted);
             //test to see that the result is correct
@@ -395,7 +395,7 @@ namespace Testing1
             //set the date to todays date
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is less 100 years
-            TestDate = TestDate.AddYears(-100);
+            TestDate = TestDate.AddYears(-50);
             //convert the date from date to a string
             string DateStarted = TestDate.ToString();
             //invoke the method
@@ -416,7 +416,7 @@ namespace Testing1
             //set the date totodays date
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is less 1 day
-            TestDate = TestDate.AddDays(-1);
+            TestDate = TestDate.AddYears(-10).AddDays(-1);
             //convert the date variable to a string variable
             string DateStarted = TestDate.ToString();
             //invoke the method
@@ -436,6 +436,8 @@ namespace Testing1
             DateTime TestDate;
             //set the date totodays date
             TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddYears(-10);
             //convert the date variable to a string variable
             string DateStarted = TestDate.ToString();
             //invoke the method
@@ -456,7 +458,7 @@ namespace Testing1
             //set the date totodays date
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is plus 1 day
-            TestDate = TestDate.AddDays(1);
+            TestDate = TestDate.AddYears(-11);
             //convert the date variable to a string variable
             string DateStarted = TestDate.ToString();
             //invoke the method
@@ -489,10 +491,15 @@ namespace Testing1
         [TestMethod]
         public void DateStartedInvalidData()
         {
+            //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
+            //String variable to store error message
             String Error = "";
+            //Add detail to string
             string DateStarted = "This is not the date";
+            //invoke the method
             Error = AStaff.Valid(Name, JobRole, Email, DateStarted);
+            //Test to see if the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
