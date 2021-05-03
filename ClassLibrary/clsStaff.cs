@@ -177,10 +177,10 @@ namespace ClassLibrary
             {
                 DateTemp = Convert.ToDateTime(dateStarted);
                 //checks if the date is earlier than today's date
-                if (DateTemp < DateTime.Now.Date)
+                if (DateTemp < DateTime.Now.Date.AddYears(-10))
                 {
                     //records the error
-                    error = error + "The date cannot be in the past : ";
+                    error = error + "The date cannot be more than 10 years in the past : ";
 
                 }
                 //checks if the date is after today's date
