@@ -66,7 +66,7 @@ namespace Testing4
         public void CountPropertyOK()
         {
             ClsOrderCollection AllOrder = new ClsOrderCollection();
-            Int32 SomeCount = 9;
+            Int32 SomeCount = 15;
             AllOrder.Count = SomeCount;
             Assert.AreEqual(AllOrder.Count, SomeCount);
         }

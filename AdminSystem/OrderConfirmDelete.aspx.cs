@@ -20,11 +20,17 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
     protected void BtnYes_Click(object sender, EventArgs e)
     {
         //create an instance of the Order Collection
-        ClsOrderCollection OrderBook = new ClsOrderCollection();
+        ClsOrderCollection OrderList = new ClsOrderCollection();
         //finds the record to delete
-        OrderBook.ThisOrder.Find(OrderID);
+        OrderList.ThisOrder.Find(OrderID);
         //deletes the record
-        OrderBook.Delete();
+        OrderList.Delete();
+        //Redirects back to the main page
+        Response.Redirect("OrderList.aspx");
+    }
+
+    protected void BtnNo_Click(object sender, EventArgs e)
+    {
         //Redirects back to the main page
         Response.Redirect("OrderList.aspx");
     }

@@ -78,7 +78,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //creates new instance of OrderCollection
             ClsOrderCollection OrderList = new ClsOrderCollection();
 
-            //If this is a new record i.e OrderID = -1 the add the data
+            //If this is a new record i.e OrderShipped = -1 the add the data
            if ( OrderShipped  == -1) 
               {
 
