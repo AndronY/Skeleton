@@ -79,7 +79,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string productDescription,string dateAdded,
+        public string Valid(string productDescription,string dateListed,
             string stockQuantity,string price)
         {
             String Error = "";
@@ -92,9 +92,30 @@ namespace ClassLibrary
             {
                 Error = Error + "The product description needs to be less than 50 characters ";
             }
+
+
+            if (stockQuantity.Length == 0)
+            {
+                Error = Error + "Stock Quantity cannot be nothing: ";
+            }
             try
             {
-                DateTemp = Convert.ToDateTime(dateAdded);
+                if (Convert.ToInt64(stockQuantity) >= int.MinValue)
+                { }
+            }
+            catch
+            {
+                Error = Error + "The quantity is not valid: ";
+            }
+
+            if (price.Length == Convert.ToDecimal(0))
+            {
+                Error = Error + "Price cannot be nothing: ";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(dateListed);
                 if (DateTemp < DateTime.Now.Date)
                 {
                     Error = Error + "Date cannot be in the past: ";
@@ -106,25 +127,7 @@ namespace ClassLibrary
             }
             catch
             {
-                Error = Error + "The date is not valid: ";
-            }
-
-            try
-            {
-                if (stockQuantity.Length == 0)
-                {
-                    Error = Error + "Stock Quantity cannot be nothing: ";
-                }
-                if (Convert.ToInt64(stockQuantity) >= int.MinValue)
-                { }
-            }
-            catch
-            {
-                Error = Error + "The quantity is not valid: ";
-            }
-            if (price.Length == 0)
-            {
-                Error = Error + "Price cannot be nothing: ";
+                Error = Error + "The date is not valid: " + dateListed;
             }
             return Error;
         }
@@ -138,11 +141,11 @@ namespace ClassLibrary
             if (DB.Count == 1)
             {
                 mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
-                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
                 mProductDescription = Convert.ToString(DB.DataTable.Rows[0]["ProductDescription"]);
                 mStockQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["StockQuantity"]);
                 mDateListed = Convert.ToDateTime(DB.DataTable.Rows[0]["DateListed"]);
                 mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
                 return true;
                 //throw new NotImplementedException();
             }

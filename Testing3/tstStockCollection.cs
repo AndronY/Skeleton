@@ -78,6 +78,52 @@ namespace Testing3
             AllStocks.ThisStock.Find(PrimaryKey);
             Assert.AreEqual(AllStocks.ThisStock, TestItem);
         }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsStockCollection AllStocks = new clsStockCollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+            TestItem.InStock = true;
+            TestItem.ProductDescription = "Sample Item";
+            TestItem.StockQuantity = 4;
+            TestItem.Price = 4.99M;
+            TestItem.DateListed = DateTime.Now.Date;
+            AllStocks.ThisStock = TestItem;
+            PrimaryKey = AllStocks.Add();
+            TestItem.ProductID = PrimaryKey;
 
+
+            TestItem.InStock = false;
+            TestItem.ProductDescription = "Sample Item2";
+            TestItem.StockQuantity = 5;
+            TestItem.Price = 5.00M;
+            TestItem.DateListed = DateTime.Now.Date;
+
+            AllStocks.ThisStock = TestItem;
+            AllStocks.Update();
+            AllStocks.ThisStock.Find(PrimaryKey);
+            Assert.AreEqual(AllStocks.ThisStock, TestItem);
+        }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsStockCollection AllStocks = new clsStockCollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+            TestItem.InStock = true;
+            TestItem.ProductID = 1;
+            TestItem.ProductDescription = "Test Product";
+            TestItem.Price = 1.99M;
+            TestItem.StockQuantity = 1;
+            TestItem.DateListed = DateTime.Now.Date;
+            AllStocks.ThisStock = TestItem;
+            PrimaryKey = AllStocks.Add();
+            TestItem.ProductID = PrimaryKey;
+            AllStocks.ThisStock.Find(PrimaryKey);
+            AllStocks.Delete();
+            Boolean Found = AllStocks.ThisStock.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
     }
 }
