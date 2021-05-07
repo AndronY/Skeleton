@@ -16,7 +16,7 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        Response.Redirect("StockDataEntry.aspx");
+        Response.Redirect("StockList.aspx");
     }
 
     protected void btnYes_Click(object sender, EventArgs e)

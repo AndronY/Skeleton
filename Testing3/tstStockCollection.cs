@@ -125,5 +125,43 @@ namespace Testing3
             Boolean Found = AllStocks.ThisStock.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
+        [TestMethod]
+        public void ReportByProductDescriptionMethoOK()
+        {
+            clsStockCollection AllStocks = new clsStockCollection();
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            FilteredStocks.ReportByProductDescription("");
+            Assert.AreEqual(AllStocks.Count, FilteredStocks.Count);
+        }
+        [TestMethod]
+        public void ReportByProductDescriptionNoneFound()
+        {
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            FilteredStocks.ReportByProductDescription("... ...");
+            Assert.AreEqual(0, FilteredStocks.Count);
+        }
+        [TestMethod]
+        public void ReportByProductDescriptionTestDataFound()
+        {
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            Boolean OK = true;
+            FilteredStocks.ReportByProductDescription("PearGX");
+            if(FilteredStocks.Count == 2)
+            {
+                if(FilteredStocks.StockList[0].ProductID != 8)
+                {
+                    OK = false;
+                }
+                if(FilteredStocks.StockList[1].ProductID != 18)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }
