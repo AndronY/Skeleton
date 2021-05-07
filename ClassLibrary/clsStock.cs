@@ -147,7 +147,6 @@ namespace ClassLibrary
                 mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
                 mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
                 return true;
-                //throw new NotImplementedException();
             }
             else
             {

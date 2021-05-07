@@ -20,7 +20,6 @@ public partial class _1_List : System.Web.UI.Page
 
     void DisplayStocks()
     {
-        //ClassLibrary.clsStockCollection Stocks = new ClassLibrary.clsStockCollection();
         clsStockCollection Stocks = new clsStockCollection();
         lstStockList.DataSource = Stocks.StockList;
         lstStockList.DataValueField = "ProductID";

@@ -63,11 +63,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 StockList.ThisStock = AStock;
                 StockList.Update();
             }
-            //StockList.ThisStock = AStock;
-            //StockList.Add();
-
-            ////Session["AStock"] = AStock;
-            ////Response.Write("StockViewer.aspx");
             Response.Redirect("StockList.aspx");
         }
         else

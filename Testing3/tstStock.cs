@@ -7,7 +7,7 @@ namespace Testing3
     [TestClass]
     public class tstStock
     {
-        //string ProductID = "500";
+        
         string ProductDescription = "Sample Item";
         string DateListed = DateTime.Now.Date.ToString();
         string StockQuantity = "875";

@@ -87,8 +87,6 @@ namespace ClassLibrary
         {
             Int32 Index = 0;
             Int32 RecordCount = 0;
-            //clsDataConnection DB = new clsDataConnection();
-            //DB.Execute("sproc_tblStock_SelectAll");
             RecordCount = DB.Count;
             mStockList = new List<clsStock>();
             while (Index < RecordCount)
