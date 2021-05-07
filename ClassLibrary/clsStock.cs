@@ -137,7 +137,7 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@ProductID", ProductID);
-            DB.Execute("spoc_tbleAddress_FilterByStockID");
+            DB.Execute("spoc_tblStock_FilterByStockID");
             if (DB.Count == 1)
             {
                 mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
