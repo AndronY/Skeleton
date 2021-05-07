@@ -53,11 +53,11 @@ namespace ClassLibrary
             {
                 clsStock AStock = new clsStock();
                 AStock.ProductID = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductID"]);
-                AStock.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
                 AStock.ProductDescription = Convert.ToString(DB.DataTable.Rows[Index]["ProductDescription"]);
                 AStock.StockQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["StockQuantity"]);
                 AStock.DateListed = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateListed"]);
                 AStock.InStock = Convert.ToBoolean(DB.DataTable.Rows[Index]["InStock"]);
+                AStock.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
                 mStockList.Add(AStock);
                 Index++;
             }
@@ -72,6 +72,24 @@ namespace ClassLibrary
             DB.AddParameter("DateListed", mThisStock.DateListed);
             DB.AddParameter("Price", mThisStock.Price);
             return DB.Execute("sproc_tblStock_Insert");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("ProductID", mThisStock.ProductID);
+            DB.AddParameter("ProductDescription", mThisStock.ProductDescription);
+            DB.AddParameter("InStock", mThisStock.InStock);
+            DB.AddParameter("StockQuantity", mThisStock.StockQuantity);
+            DB.AddParameter("Price", mThisStock.Price);
+            DB.AddParameter("DateListed", mThisStock.DateListed);
+            DB.Execute("sproc_tblStock_Update");
+        }
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductID", mThisStock.ProductID);
+            DB.Execute("sproc_tbleStock_Delete");
         }
     }
 }
